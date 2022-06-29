@@ -25,6 +25,7 @@ int main(){
     printf("Crear el archivo binario\n");
     printf("Isertar Datos al archivo\n");
     printf("Leer Datos del archivo\n");
+    printf("Borrar todos los datos\n");
     printf("Exit");
 
     while(true){
@@ -32,7 +33,7 @@ int main(){
         keypressed = getch();
         movePointer(30,option);
         printf(" ");
-        if(keypressed == T_DOWN && option <= 3){
+        if(keypressed == T_DOWN && option <= 4){
             option++;
         } 
         else if(keypressed == T_UP && option > 1){
@@ -61,6 +62,9 @@ int main(){
                 leerData();
             }
             else if(option == 4){
+                carrosFile.deleteFile();
+            }
+            else if(option == 5){
                 exit(1);
             }
         }
