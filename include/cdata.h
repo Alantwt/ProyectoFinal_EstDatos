@@ -1,6 +1,7 @@
 #ifndef _CDATA
 #define _CDATA
-#include <stdio.h>
+
+char CARROS_FILE[] = "../data/CarroData.alan";
 
 struct Carro{
     char carroTam[20];
@@ -15,12 +16,14 @@ class Fcarros{
     
 public:
     Carro* carros;
+    Carro* carrosF;
     Fcarros(char* _file);
     bool createFile();
     int addCarro(char* Smarca, char* Stipo, char* Smodelo, char* Stam);
     int readCarro();
     bool verifyFileExist(char* file);
     bool deleteFile();
+    int searchBy(char* carroTam,char* carroTipo,char* carroMarca);
 };
 
 #include "../lib/cdata.cpp"

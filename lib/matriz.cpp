@@ -2,10 +2,6 @@
 
 #include <stdio.h>
 
-int main(){
-    matriz();
-}
-
 //CODIGO
 
 void matriz(){

@@ -3,10 +3,6 @@
 
 //CODIGO
 
-int main(){
-    conjuntos();
-    return 0;
-}
 
 void conjuntos(){
 

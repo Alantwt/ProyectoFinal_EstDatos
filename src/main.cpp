@@ -7,6 +7,7 @@
 #include "../include/funciones.h"
 #include "../include/matriz.h"
 #include "../include/conjuntos.h"
+#include "../include/usuario.h"
 
 void menu();
 
@@ -19,15 +20,15 @@ void menu(){
     char keypressed;
     int option = 1;
 
-    printf("Escoja una opcion: \n");
-    printf("Ayudar a escojer un carron\n");
-    printf("Mostrar Conjuntos\n");
-    printf("Mostrar Matris Relacion\n");
-    printf("Mostrar Los digrafos:\n");
-    printf("Mostrar La funcion\n");
-    printf("Exit");
-
     while(true){
+        movePointer(0,0);
+        printf("Escoja una opcion: \n");
+        printf("Ayudar a escojer un carro\n");
+        printf("Mostrar Conjuntos\n");
+        printf("Mostrar Matris Relacion\n");
+        printf("Mostrar Los digrafos:\n");
+        printf("Mostrar La funcion\n");
+        printf("Exit");
         
         keypressed = getch();
         movePointer(30,option);
@@ -41,7 +42,7 @@ void menu(){
         else if(keypressed == ENTER){
             movePointer(10,10);
             if(option == 1){
-                printf("1");
+                UserMain();
             }
             else if(option == 2){
                 printf("2");

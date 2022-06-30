@@ -51,7 +51,7 @@ int Fcarros::readCarro(){
     }
 
     fclose(archivo);
-    return i;
+    return i+1;
 }
 
 bool Fcarros::verifyFileExist(char* _file){
@@ -65,3 +65,35 @@ bool Fcarros::verifyFileExist(char* _file){
 bool Fcarros::deleteFile(){
     archivo = fopen(file,"wb+");
 }
+
+int Fcarros::searchBy(char* carroTam, char* carroTipo, char* carroMarca){
+    int lenCarros = readCarro();
+    free(carrosF);
+    carrosF = (Carro*)calloc(1,sizeof(Carro));
+    int i = 0;
+    
+    for(int j = 0; j <= lenCarros-1; j++){
+        if((strcmp((carros+j)->carroMarca,carroMarca) == 0)&&(strcmp((carros+j)->carroTam,carroTam) == 0)&&(strcmp((carros+j)->carroTipo,carroTipo)== 0)){
+            // printf("\n----------------------\n");
+            // puts((carros+j)->carroMarca);
+            // puts((carros+j)->carroTam);
+            // puts((carros+j)->carroModelo);
+            // puts((carros+j)->carroTipo);
+            
+            strcpy((carrosF+i)->carroMarca,(carros+j)->carroMarca);
+            strcpy((carrosF+i)->carroTam,(carros+j)->carroTam);
+            strcpy((carrosF+i)->carroTipo,(carros+j)->carroTipo);
+            strcpy((carrosF+i)->carroModelo,(carros+j)->carroModelo);
+            
+            // printf("\n___________________________\n");
+            // puts((carrosF+i)->carroMarca);
+            // puts((carrosF+i)->carroTam);
+            // puts((carrosF+i)->carroModelo);
+            // puts((carrosF+i)->carroTipo);
+            i++;
+            carrosF = (Carro*)realloc(carrosF,(i+1)*(sizeof(Carro)));
+        }
+    }
+    if(carrosF == NULL)return 0;
+    return i;
+}   

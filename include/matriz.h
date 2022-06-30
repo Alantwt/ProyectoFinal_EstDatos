@@ -5,6 +5,6 @@
 
 void matriz();
 
-#include "../lib/funciones.cpp"
+#include "../lib/matriz.cpp"
 
 #endif
