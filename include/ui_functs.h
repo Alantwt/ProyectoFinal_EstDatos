@@ -17,7 +17,7 @@ WNDCLASSEX wClass;   //Estilos de la ventana principal
 wchar_t className[] = L"Estilos"; 
 HDC hdc,hdc1;
 PAINTSTRUCT ps,ps1;
-HWND btnRecomendAuto,btnConjunto,btnMatrisBtn,btnDigrafoBtn,btnFuncionBtn,btnSemiGrupoBtn;//BUTTONS
+HWND btnRecomendAuto,btnConjunto,btnMatris,btnDigrafo,btnFuncion,btnSemiGrupo;//BUTTONS
 HWND mainFrame;//Frame Principal
 HWND frameRecomedAuto,frameConjuto,frameMatris,frameDigrafo,frameFuncion,frameSemiGrupo;
 

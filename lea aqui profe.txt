@@ -1,0 +1,28 @@
+------------------Documentacion del Proyecto-----------------
+Para ver el marco toerico, osea nuestra documentacion
+de como vamos haciendo el Proyecto puede entrar al documentacion
+que se llama ExamenSemestral_Estrc.Discretas.docx
+ahi tenemos ya casi lista las partes de: 
+                                        Teoria de conjuntos
+                                        +La definicio de nuestros conjuntos
+                                        +Las funciones Caracteristicas 
+                                        +Las operaciones 
+                                        +El conjunto Universal graficamente
+
+                                        Relaciones y funciones
+                                        +Los digrafos de manera graficamente
+                                        +Los Grados internos y externos
+                                        +La matris relacion de forma binaria
+                                        +Las Propiedades
+                                        +La funcion de manera Grafica
+
+Todavia no hemos terminado La introduccion y conclucion por que, no hemos terminado al completo 
+y nos haria falta la segunda parte que subio hace poco
+
+
+---------------------------Aplicacion/Codigo-----------------
+Para ejecutar el codigo debe irse a la carpeta de /output ir darle click al la aplicacion que se llama MainWindow.externos
+
+El codigo lo estoy haciendo yo Alan Dlegado Profe y disculpe si no 
+lo entiende del todo, ya que no lo eh documentado por completo
+

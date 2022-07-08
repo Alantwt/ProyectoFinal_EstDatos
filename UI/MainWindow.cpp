@@ -18,21 +18,6 @@ LRESULT CALLBACK WindowProcedure(HWND mainWindow,UINT messageW,WPARAM wParam,LPA
 
 
 
-//VARIABLES GLOBALES
-// HWND mainW;     //VentanaPrincipal
-// MSG msgW;       //Mensajes de la ventana
-// WNDCLASSEX wClass;   //Estilos de la ventana principal
-// wchar_t className[] = L"Estilos"; 
-// HDC hdc,hdc1;
-// PAINTSTRUCT ps,ps1;
-// HWND btnRecomendAuto,btnConjunto,btnMatrisBtn,btnDigrafoBtn,btnFuncionBtn,btnSemiGrupoBtn;//BUTTONS
-// HWND mainFrame;//Frame Principal
-// HWND frameConjutos;
-
-
-
-
-
 int WINAPI WinMain (HINSTANCE hThisInstance,
 
                      HINSTANCE hPrevInstance,
@@ -132,6 +117,7 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
             else if(LOWORD(BTN_digrafo) == wParam)actionBTN_digrafo(mainFrame);
             else if(LOWORD(BTN_funcion) == wParam)actionBTN_funcion(mainFrame);
             else if(LOWORD(BTN_semiGrupo) == wParam)actionBtn_semiGrupo(mainFrame);
+            else if(LOWORD(BTN_matris) == wParam)actionBTN_matris(mainFrame);
             break;
 
         case WM_PAINT://Repinta la ventana
