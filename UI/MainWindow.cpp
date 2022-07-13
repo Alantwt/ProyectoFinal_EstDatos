@@ -1,13 +1,9 @@
 #ifndef UNICODE
-#define UNICODE
+#define UNICODE//Esto es para utilizar caracteres latinos mas facil
 #endif
 
 #define _WIN32_WINNT 0x0500 // Es necesaria esta definicion para esconder ventana de consola; 0x0500 son las versiones de windows con las que es compatible
 
-#include <windows.h>
-#include <iostream>
-#include <windef.h>
-#include <winuser.h>
 
 #include "../include/ui_functs.h"
 using namespace std;
@@ -63,6 +59,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     );
 
 
+
     //HACER LA VENTANA VISIBLE
     ShowWindow (mainW, nCmdShow);
 
@@ -94,6 +91,8 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
                                   WPARAM wParam, //identificador del evento producido
                                   LPARAM lParam){
 
+
+                                    
     //MANEJO DE LOS MENSAJES RECIBIDOS
     switch (messageW){
 
@@ -106,19 +105,41 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
             break;
         
         case WM_CREATE:
+            mainFrame_size.x = 900;
+            mainFrame_size.y = 500;
+            frame_size.x = mainFrame_size.x-20;
+            frame_size.y = mainFrame_size.y-36;
+            frameCarros_size.x = 0.99*frame_size.x;
+            frameCarros_size.y = 0.495*frame_size.y;
+
             createButtons(mainWindow);
             createFrame(mainWindow);
+            actionBTN_recomendarAuto(mainFrame,mainWindow);
             break;
 
         case WM_COMMAND:
             //ACCIONES DE LOS BOTONES
-            if(LOWORD(BTN_recomendAuto) == wParam)actionBTN_recomendarAuto(mainFrame);
+            if(LOWORD(BTN_recomendAuto) == wParam)actionBTN_recomendarAuto(mainFrame,mainWindow);
             else if(LOWORD(BTN_conjunto) == wParam)actionBTN_conjunto(mainFrame);
             else if(LOWORD(BTN_digrafo) == wParam)actionBTN_digrafo(mainFrame);
             else if(LOWORD(BTN_funcion) == wParam)actionBTN_funcion(mainFrame);
             else if(LOWORD(BTN_semiGrupo) == wParam)actionBtn_semiGrupo(mainFrame);
             else if(LOWORD(BTN_matris) == wParam)actionBTN_matris(mainFrame);
+            else if(LOWORD(BTN_generate) == wParam)actionBtn_generate();
+            else if(LOWORD(BTN_next) == wParam)actionBtn_next();
+            else if(LOWORD(BTN_prev) == wParam)actionBtn_prev();
+            else if(LOWORD(BTN_ford) == wParam)actionBtn_ford(wParam,mainWindow);
+            else if(LOWORD(BTN_toyota) == wParam)actionBtn_toyota(wParam,mainWindow);
+            else if(LOWORD(BTN_bmw) == wParam)actionBtn_bmw(wParam,mainWindow);
+            else if(LOWORD(BTN_big) == wParam)actionBtn_big(wParam,mainWindow);
+            else if(LOWORD(BTN_medium) == wParam)actionBtn_medium(wParam,mainWindow);
+            else if(LOWORD(BTN_small) == wParam)actionBtn_small(wParam,mainWindow);
+            else if(LOWORD(BTN_family) == wParam)actionBtn_family(wParam,mainWindow);
+            else if(LOWORD(BTN_comerce) == wParam)actionBtn_comerce(wParam,mainWindow);
+            else if(LOWORD(BTN_sport) == wParam)actionBtn_sport(wParam,mainWindow);
+            cout<<wParam<<endl;
             break;
+
 
         case WM_PAINT://Repinta la ventana
             hdc = BeginPaint(mainWindow, &ps);
@@ -129,19 +150,37 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
 
             EndPaint(mainWindow, &ps);
 
-            //------------------Prueba
-            hdc1 = BeginPaint(frameImage,&ps1);
+            hdc1 = BeginPaint(frameImage, &ps1);
 
-            FillRect(hdc1,&ps1.rcPaint,(HBRUSH)(COLOR_WINDOWTEXT));
+            // All painting occurs here, between BeginPaint and EndPaint.
 
-            EndPaint(frameImage,&ps);
+            FillRect(hdc1, &ps1.rcPaint, (HBRUSH) (COLOR_WINDOWFRAME));
+
+            EndPaint(frameImage, &ps1);
 
             break;
 
         case WM_SIZE:
             //Redimencionar el MainFrame
-            MoveWindow(mainFrame,10,26,LOWORD(lParam)-20,HIWORD(lParam)-36,TRUE);
+            mainFrame_size.x = LOWORD(lParam)-20;
+            mainFrame_size.y = HIWORD(lParam)-36;
+            frame_size.x = mainFrame_size.x-20;
+            frame_size.y = mainFrame_size.y-20;
+            frameCarros_size.x = 0.99*frame_size.x;
+            frameCarros_size.y = 0.495*frame_size.y;
+            
+            reSizeWindows();
+            
             break;
+
+
+        case WM_CHAR:
+            cout<<(wchar_t)wParam<<endl;
+            if((wchar_t)wParam == 13){
+                actionBtn_generate();
+            }
+            break;
+        
 
         default:  
 
