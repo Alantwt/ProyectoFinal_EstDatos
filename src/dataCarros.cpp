@@ -128,10 +128,10 @@ void leerData(){
     printf("***%d***",lenFile);
 
     for(int u = 0; u <= lenFile-1; u++){
-        _putws((carrosFile.carros+u)->carroMarca);
-        _putws((carrosFile.carros+u)->carroModelo);
-        _putws((carrosFile.carros+u)->carroTam);
-        _putws((carrosFile.carros+u)->carroTipo);
-        _putws((carrosFile.carros+u)->carroPath);
+        _putws((carrosFile.carrosTotal+u)->carroMarca);
+        _putws((carrosFile.carrosTotal+u)->carroModelo);
+        _putws((carrosFile.carrosTotal+u)->carroTam);
+        _putws((carrosFile.carrosTotal+u)->carroTipo);
+        _putws((carrosFile.carrosTotal+u)->carroPath);
     }
 }

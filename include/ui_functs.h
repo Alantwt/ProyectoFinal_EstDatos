@@ -20,6 +20,7 @@
 #define BTN_family 116
 #define BTN_comerce 117
 #define BTN_sport 118
+#define BTN_funcCarac 119
 
 //Sizes
 struct Size{
@@ -52,20 +53,24 @@ wchar_t className[] = L"Estilos";
 HDC hdc,hdc1;
 PAINTSTRUCT ps,ps1;
 //BUTTONS
-HWND btnRecomendAuto,btnConjunto,btnMatris,btnDigrafo,btnFuncion,btnSemiGrupo,btnGenerate,btnNext,btnPrev;
+HWND btnRecomendAuto,btnConjunto,btnMatris,btnDigrafo,btnFuncion,btnSemiGrupo,btnGenerate,btnNext,btnPrev,btnFuncCarac;
 //RADIO BUTTONS
 HINSTANCE hIns;
-wchar_t brandCarOption[20];
+wchar_t brandCarOption[20] = L"";
+HWND marcaWoption;
 HWND RbtnFord,RbtnToyota,RbtnBmw;//OPCION MARCA
-wchar_t sizeCarOption[20];
+wchar_t sizeCarOption[20] = L"";
+HWND sizeWoption;
 HWND RbtnBig,RbtnMedium,RbtnSmall;//OPCION TAMAÑO
-wchar_t funcCarOption[20];
+wchar_t funcCarOption[20] = L"";
+HWND funcWoption;
 HWND RbtnFamily,RbtnComerce,RbtnSport;//OPCION FUNCIONALIDAD
 
 //Frame Principal
 HWND mainFrame;
 //Frames
-HWND frameRecomedAuto,frameConjuto,frameMatris,frameDigrafo,frameFuncion,frameSemiGrupo,frameCarros,frameTemp;
+wchar_t dataCarros[40] = L"";
+HWND frameRecomedAuto,frameConjuto,frameMatris,frameDigrafo,frameFuncion,frameSemiGrupo,frameCarros,frameTemp,frameDataCarros,frameConjuntosDef,frameFuncCarac;
 //BASE DE DATOS
 char autosFilePath[] = "..\\data\\CarroData.alan";
 Fcarros autosData(autosFilePath);
@@ -81,6 +86,7 @@ wchar_t imgDigrafo[] = L"../images/Digrafo.bmp";
 wchar_t imgFuncion[] = L"../images/Funcion.bmp";
 wchar_t imgMatris[] = L"../images/Matris.bmp";
 wchar_t imgSemiGrupo[] = L"../images/SemiGrupo.bmp";
+wchar_t imgFuncCarac[] = L"..\\images\\FuncionCaracteristica.bmp";
 
 
 
@@ -94,6 +100,7 @@ bool createFrameMatris(HWND masterWindow);
 bool createFrameDigrafo(HWND masterWindow);
 bool createFrameFuncion(HWND masterWindow);
 bool createFrameSemiGrupo(HWND masterWindow);
+void createFrameFuncCarac(HWND masterWindow);
 //REDIMENCIONAR VENTANAS
 void reSizeWindows();
 //RESETEAR VENTANAS
@@ -106,7 +113,7 @@ bool actionBTN_matris(HWND masterWindow);
 bool actionBTN_digrafo(HWND masterWindow);
 bool actionBTN_funcion(HWND masterWindow);
 bool actionBtn_semiGrupo(HWND masterWindow);
-void actionBtn_generate();;
+void actionBtn_generate(bool resetCounter);;
 void actionBtn_next();
 void actionBtn_prev();
 void actionBtn_ford(WPARAM wParam, HWND mainWindow);
@@ -118,6 +125,7 @@ void actionBtn_small(WPARAM wParam, HWND mainWindow);
 void actionBtn_family(WPARAM wParam, HWND mainWindow);
 void actionBtn_comerce(WPARAM wParam, HWND mainWindow);
 void actionBtn_sport(WPARAM wParam, HWND mainWindow);
+void actionBtn_funcCarac(HWND masterWindow);
 
 //IMAGEN
 void loadImage(wchar_t path[]);

@@ -4,7 +4,7 @@
 
 Fcarros::Fcarros(char* _file){
     file = _file;
-    carros = (Carro*)calloc(1,sizeof(Carro));
+    carrosTotal = (Carro*)calloc(1,sizeof(Carro));
 }
 
 bool Fcarros::createFile(){
@@ -41,13 +41,13 @@ int Fcarros::readCarro(){
     if(verifyFileExist(file)){
         archivo  = fopen(file,"rb");
         
-        fread((carros+i),sizeof(Carro),1,archivo);
-        _putws((carros+i)->carroPath);
+        fread((carrosTotal+i),sizeof(Carro),1,archivo);
+        _putws((carrosTotal+i)->carroPath);
         printf("Entra\n");
         while(feof(archivo) == 0){
             i++;
-            carros = (Carro*)realloc(carros,(i+1)*(sizeof(Carro)));
-            fread((carros+i),sizeof(Carro),1,archivo);
+            carrosTotal = (Carro*)realloc(carrosTotal,(i+1)*(sizeof(Carro)));
+            fread((carrosTotal+i),sizeof(Carro),1,archivo);
         }
 
         fclose(archivo);
@@ -66,4 +66,24 @@ bool Fcarros::verifyFileExist(char* _file){
 
 bool Fcarros::deleteFile(){
     archivo = fopen(file,"wb+");
+}
+
+int Fcarros::readCarroBy(wchar_t* Smarca, wchar_t* Stipo, wchar_t* Stam){
+    free(carros);
+    int lenCarrosT = readCarro();
+    int lenCarros = 0;
+    carros = (Carro*)calloc(1,sizeof(Carro));
+    for(int i = 0; i <= lenCarrosT; i++){
+        if((wcscmp((carrosTotal+i)->carroMarca, Smarca) == 0)&&(wcscmp((carrosTotal+i)->carroTam, Stam) == 0)&&(wcscmp((carrosTotal+i)->carroTipo, Stipo) == 0)){
+            wcscpy((carros+lenCarros)->carroMarca,(carrosTotal+i)->carroMarca);
+            wcscpy((carros+lenCarros)->carroModelo,(carrosTotal+i)->carroModelo);
+            wcscpy((carros+lenCarros)->carroTam,(carrosTotal+i)->carroTam);
+            wcscpy((carros+lenCarros)->carroTipo,(carrosTotal+i)->carroTipo);
+            wcscpy((carros+lenCarros)->carroPath,(carrosTotal+i)->carroPath);
+            lenCarros++;
+            carros = (Carro*)realloc(carros,(lenCarros+1)*(sizeof(Carro)));
+        }
+    }
+    printf("len carros: %d\n",lenCarros);
+    return lenCarros;
 }

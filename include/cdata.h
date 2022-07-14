@@ -22,11 +22,13 @@ class Fcarros{
     char* file;
     
 public:
+    Carro* carrosTotal;
     Carro* carros;
     Fcarros(char* _file);
     bool createFile();
     int addCarro(wchar_t* Smarca, wchar_t* Stipo, wchar_t* Smodelo, wchar_t* Stam, wchar_t* Spath);
     int readCarro();
+    int readCarroBy(wchar_t* Smarca, wchar_t* Stipo, wchar_t* Stam);
     bool verifyFileExist(char* file);
     bool deleteFile();
 };

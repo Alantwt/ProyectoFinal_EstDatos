@@ -125,7 +125,7 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
             else if(LOWORD(BTN_funcion) == wParam)actionBTN_funcion(mainFrame);
             else if(LOWORD(BTN_semiGrupo) == wParam)actionBtn_semiGrupo(mainFrame);
             else if(LOWORD(BTN_matris) == wParam)actionBTN_matris(mainFrame);
-            else if(LOWORD(BTN_generate) == wParam)actionBtn_generate();
+            else if(LOWORD(BTN_generate) == wParam)actionBtn_generate(true);
             else if(LOWORD(BTN_next) == wParam)actionBtn_next();
             else if(LOWORD(BTN_prev) == wParam)actionBtn_prev();
             else if(LOWORD(BTN_ford) == wParam)actionBtn_ford(wParam,mainWindow);
@@ -137,6 +137,7 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
             else if(LOWORD(BTN_family) == wParam)actionBtn_family(wParam,mainWindow);
             else if(LOWORD(BTN_comerce) == wParam)actionBtn_comerce(wParam,mainWindow);
             else if(LOWORD(BTN_sport) == wParam)actionBtn_sport(wParam,mainWindow);
+            else if(LOWORD(BTN_funcCarac) == wParam)actionBtn_funcCarac(mainFrame);
             cout<<wParam<<endl;
             break;
 
@@ -177,7 +178,7 @@ LRESULT CALLBACK WindowProcedure (HWND mainWindow, //VENTANA PRINCIPAL
         case WM_CHAR:
             cout<<(wchar_t)wParam<<endl;
             if((wchar_t)wParam == 13){
-                actionBtn_generate();
+                actionBtn_generate(true);
             }
             break;
         
