@@ -71,6 +71,7 @@ HWND mainFrame;
 //Frames
 wchar_t dataCarros[40] = L"";
 HWND frameRecomedAuto,frameConjuto,frameMatris,frameDigrafo,frameFuncion,frameSemiGrupo,frameCarros,frameTemp,frameDataCarros,frameConjuntosDef,frameFuncCarac;
+HWND frameSemiGrupoDef, FrameConjuntoOperaciones;
 //BASE DE DATOS
 char autosFilePath[] = "..\\data\\CarroData.alan";
 Fcarros autosData(autosFilePath);

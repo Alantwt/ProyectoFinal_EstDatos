@@ -46,18 +46,39 @@ void createRbtnOptions(HWND mainWindow){
 }
 
 bool createFrameConjuntos(HWND masterWindow){
-    frameConjuto = CreateWindowEx(0,L"static",NULL,WS_VISIBLE|WS_CHILD|SS_CENTER,mainFrame_size.x*0.1,26,900,500,masterWindow,NULL,NULL,NULL);  
+    frameConjuto = CreateWindowEx(0,L"static",NULL,WS_VISIBLE|WS_CHILD|SS_CENTER,10,26,900,500,masterWindow,NULL,NULL,NULL);  
     frameConjuntosDef = CreateWindowEx(
         0,
         L"static",
         L"U={Grande, pequeño, mediano, comercial, familiar,deportivo}\nF={Familiar,mediano,pequeño}\nT={Comercial, Grande, mediano, pequeño}\nB={Deportivo, mediano}",
         WS_VISIBLE|WS_CHILD,
-        mainFrame_size.x*0.1,550,
+        10,550,
         500,50,
         masterWindow,
         NULL,
         NULL,
         NULL
+    );
+    FrameConjuntoOperaciones = CreateWindowEx(
+        0,
+        L"Static",
+        L"Union : FUTUB={Grande, pequeño, mediano, Comercial, Familiar,Deportivo}\n \
+          Intersección F∩B={}, F∩T={mediano}, T∩B={}, F∩T∩D={pequeño}\n \
+Complemento relativo :\n \
+          F-B={familiar, mediano}, F-T={familiar}, T-F={comercial, mediano},\n \
+          T-B={comercial, grande, deportivo}, B-F={deportivo}, \n \
+          B-T={deportivo}\n \
+Diferencia Simetrica : \n \
+          FΔB={familiar, deportivo}, FΔT={familiar,comercial,grande}, \n \\
+          TΔB={comercial,grande,deportivo}, \n \\ 
+          FΔTΔB={familiar,comercial,deportivo}",
+          WS_VISIBLE|WS_CHILD,
+          mainFrame_size.x*0.61,26,
+          500,300,
+          masterWindow,
+          NULL,
+          NULL,
+          NULL
     );
 }
 bool createFrameMatris(HWND masterWindow){
@@ -71,6 +92,30 @@ bool createFrameFuncion(HWND masterWindow){
 }
 bool createFrameSemiGrupo(HWND masterWindow){
     frameSemiGrupo = CreateWindowEx(0,L"static",NULL,WS_VISIBLE|WS_CHILD|SS_CENTER,mainFrame_size.x*0.1,26,900,500,masterWindow,NULL,NULL,NULL);
+    frameSemiGrupoDef = CreateWindowEx(
+        0,
+        L"static",
+        L"Conjunto vacio\n \
+    U ≠ {}\n \
+Aplicación de la operación binaria \n \
+	a*b = b*a \n \
+	F*M = M*F \n \
+	0 = 0 \n \
+Los resultados no existen dentro del conjunto \n \
+    Propiedad Asociativa\n \
+    a*(b*c) = (a*b)*c \n \
+    F*(M*P) = (F*M)*P \n \
+    F*(0) = (1)*P \n \
+    1 = 1\n \
+No es un semigrupo ya que no cumple con la segunda norma de los semigrupos.",
+    WS_VISIBLE|WS_CHILD,
+    mainFrame_size.x*0.1,400,
+    300,400,
+    masterWindow,
+    NULL,
+    NULL,
+    NULL
+    );
 }
 void createFrameFuncCarac(HWND masterWindow){
     frameFuncCarac = CreateWindowEx(0,L"static",NULL,WS_VISIBLE|WS_CHILD|SS_CENTER,mainFrame_size.x*0.2,26,900,500,masterWindow,NULL,NULL,NULL);
@@ -81,7 +126,7 @@ void reSizeWindows(){
     MoveWindow(frameCarros,190,mainFrame_size.y*0.3,(mainFrame_size.x-400),(mainFrame_size.y*0.535),TRUE);
     MoveWindow(mainFrame,10,26,mainFrame_size.x,mainFrame_size.y,TRUE);
     MoveWindow(frameDigrafo,mainFrame_size.x*0.1,26,frame_size.x,frame_size.y,TRUE);
-    MoveWindow(frameConjuto,mainFrame_size.x*0.1,26,frame_size.x,frame_size.y,TRUE);
+    MoveWindow(frameConjuto,10,26,frame_size.x,frame_size.y,TRUE);
     MoveWindow(frameFuncion,mainFrame_size.x*0.1,26,frame_size.x,frame_size.y,TRUE);
     MoveWindow(frameMatris,mainFrame_size.x*0.05,26,frame_size.x,frame_size.y,TRUE);
     MoveWindow(frameSemiGrupo,mainFrame_size.x*0.1,26,frame_size.x,frame_size.y,TRUE);
@@ -98,7 +143,8 @@ void reSizeWindows(){
     MoveWindow(sizeWoption,(mainFrame_size.x/2)-40,70,50,20,TRUE);
     MoveWindow(funcWoption,mainFrame_size.x-280,70,50,20,TRUE);
     MoveWindow(frameDataCarros,mainFrame_size.x*0.2,mainFrame_size.y*0.51,mainFrame_size.x-400,15,TRUE);
-    MoveWindow(frameConjuntosDef,mainFrame_size.x*0.1,550,500,50,TRUE);
+    MoveWindow(frameConjuntosDef,10,550,500,50,TRUE);
+    MoveWindow(frameSemiGrupoDef,mainFrame_size.x*0.1,400,300,400,TRUE);
 }
 
 //RESETEAR VENTANAS
@@ -126,6 +172,8 @@ void resetMainFrame(){
     DestroyWindow(funcWoption);
     DestroyWindow(frameConjuntosDef);
     DestroyWindow(frameFuncCarac);
+    DestroyWindow(FrameConjuntoOperaciones);
+    DestroyWindow(frameSemiGrupoDef);
 }
 
 
